@@ -1,0 +1,40 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">Change PIN</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="cancel()" ng-show="canCancel">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="save()">
+      <div class="list">
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <input type="tel" ng-model="pin.Num1"></input>
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input">
+                    <input type="tel" ng-model="pin.Num2"></input>
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input">
+                    <input type="tel" ng-model="pin.Num3"></input>
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input">
+                    <input type="tel" ng-model="pin.Num4"></input>
+                </label>
+            </div>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive" type="submit" ng-click="validatePin()">Create Pin</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</div>
+

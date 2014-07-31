@@ -1,0 +1,14 @@
+<ion-view>
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <div class="h1 title">Bookmarks</div>
+    <button class="button button-clear button-positive" ng-click="newBookmark()">Add</button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item ng-repeat="bookmark in bookmarks" href="#/app/bookmarks/{{bookmark.id}}">
+        {{bookmark.description}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
