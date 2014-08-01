@@ -1,0 +1,15 @@
+2014-07-31 22:02:55.236 EHRez Remote[81375:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-31 22:02:55.241 EHRez Remote[81375:70b] Unlimited access to network resources
+2014-07-31 22:02:55.305 EHRez Remote[81375:70b] Fix applied for database locations?: YES
+2014-07-31 22:02:55.316 EHRez Remote[81375:70b] [CDVTimer][keyboard] 0.056028ms
+2014-07-31 22:02:55.359 EHRez Remote[81375:70b] [CDVTimer][statusbar] 42.572975ms
+2014-07-31 22:02:55.360 EHRez Remote[81375:70b] [CDVTimer][TotalPluginStartup] 43.404996ms
+2014-07-31 22:02:55.423 EHRez Remote[81375:70b] Resetting plugins due to page load.
+2014-07-31 22:02:55.516 EHRez Remote[81375:70b] Finished load of: file:///Users/blackshuu/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/666D9F64-3655-4570-85E3-CB93038D564D/EHRez%20Remote.app/www/index.html#/app/bookmarks
+2014-07-31 22:03:23.663 EHRez Remote[81558:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-31 22:03:23.668 EHRez Remote[81558:70b] Unlimited access to network resources
+2014-07-31 22:03:23.682 EHRez Remote[81558:70b] [CDVTimer][keyboard] 0.069976ms
+2014-07-31 22:03:23.688 EHRez Remote[81558:70b] [CDVTimer][statusbar] 5.859971ms
+2014-07-31 22:03:23.688 EHRez Remote[81558:70b] [CDVTimer][TotalPluginStartup] 6.705999ms
+2014-07-31 22:03:23.770 EHRez Remote[81558:70b] Resetting plugins due to page load.
+2014-07-31 22:03:23.867 EHRez Remote[81558:70b] Finished load of: file:///Users/blackshuu/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/70246D95-C513-4D9B-A238-1ADD613F8DAA/EHRez%20Remote.app/www/index.html#/app/bookmarks

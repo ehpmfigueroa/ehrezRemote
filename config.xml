@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.frontendawesome262814" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>frontendAwesome</name>
+<widget id="com.ehrez.ehrezRemote" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>EHRez Remote</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Enabled remote logins.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="mfigueroa@ehrez.com" href="http://ehrez.com/">
+      Marcos Figueroa
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -16,4 +16,7 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <feature name="Device">
+    <param name="ios-package" value="CDVDevice" />
+</feature>
 </widget>

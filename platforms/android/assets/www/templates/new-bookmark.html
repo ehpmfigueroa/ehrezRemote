@@ -1,0 +1,21 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">New Bookmark</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeNewBookmark()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="createBookmarkForm" ng-submit="createBookmark(bookmark)">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="Description" ng-model="bookmark.description" required>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="createBookmarkForm.$invalid">Save</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>
+

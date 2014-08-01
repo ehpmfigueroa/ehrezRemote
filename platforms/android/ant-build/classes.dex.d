@@ -1,0 +1,25 @@
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes.dex : \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/BuildConfig.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/EHRezRemote.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$array.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$attr.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$color.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$dimen.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$drawable.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$id.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$layout.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$menu.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$raw.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$string.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R$xml.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ehrez/ehrezRemote/R.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$1.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/com/phonegap/plugins/barcodescanner/BarcodeScanner.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar$1.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar$2.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/classes/org/apache/cordova/statusbar/StatusBar.class \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/dexedLibs/classes-2c05f6059f0bec6e71f4dbae92dd9dd0.jar \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/dexedLibs/com.google.zxing.client.android.captureactivity-51c222e17ce3b1428767aa9dc965ec7c.jar \
