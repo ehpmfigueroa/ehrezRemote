@@ -36,7 +36,7 @@ angular.module('bookmarksApp.controllers', [])
   };
 })
 
-.controller('BookmarksCtrl', function($scope, $timeout, $ionicModal, Bookmarks, $ionicLoading) {
+.controller('BookmarksCtrl', function($scope, $timeout, $ionicModal, Bookmarks, $ionicLoading, $cordovaPinDialog) {
   bypassQRCode = false;
   $scope.bookmarks = Bookmarks.all();
 
@@ -45,6 +45,18 @@ angular.module('bookmarksApp.controllers', [])
   }).then(function(modal) {
     $scope.bookmarkModal = modal;
   });
+
+  $scope.showPinDialog = function(message) {
+    $cordovaPinDialog.prompt(message).then(
+    function(result) {
+      strResult = JSON.stringify(result);
+      alert(strResult);
+    },
+    function (error) {
+      strError = JSON.stringify(error);
+      alert(strError);
+    });
+  }
 
   $scope.createBookmark = function(bookmark) {
     $scope.bookmarks.push({

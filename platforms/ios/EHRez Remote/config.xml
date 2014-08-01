@@ -31,6 +31,9 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="lightcontent" />
+    <feature name="PinDialog">
+        <param name="ios-package" value="CDVPinDialog" />
+    </feature>
     <name>EHRez Remote</name>
     <description>
         Enabled remote logins.

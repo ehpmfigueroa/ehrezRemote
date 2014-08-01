@@ -1,6 +1,6 @@
 angular.module('bookmarksApp.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, SecurePin, $cordovaPinDialog) {
   // Form data for the login modal
   $scope.loginData = {
     username: "pcruz",
@@ -34,9 +34,60 @@ angular.module('bookmarksApp.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+  $scope.newPin = function() {
+    createPin();
+  };
+
+  ionic.Platform.ready(function(device) {
+   if (SecurePin.isNewPinRequired()) {
+      $scope.modal.show();
+    }
+  });
+
+  var pin1 = "";
+  var pin2 = "";
+
+  function createPin() {
+    $cordovaPinDialog.prompt("Create a new PIN of your choosing (min 4).", newPinDialogCallback, "New PIN");
+  }
+
+  function newPinDialogCallback(results) {
+    if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3) {
+      pin1 = results.input1;
+      $cordovaPinDialog.prompt("Please re-enter the PIN.", retypePinDialogCallback, "PIN Verification");
+    } else {
+      createPin();
+    }
+  }
+
+  function retypePinDialogCallback(results) {
+    if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3) {
+      pin2 = results.input1;
+      setPin();
+    } else {
+      createPin();
+    }
+  }
+
+  function setPin() {
+     if (pin1 == pin2 && SecurePin.setNewPin(pin1) && SecurePin.isNewPinRequired() == false) {
+        $ionicLoading.show({
+          template: 'New pin set!',
+          duration: 2000
+        });
+        return;
+     }
+     $ionicLoading.show({
+        template: 'Error: PINs do not match. Please try again.',
+        duration: 3000
+      });
+     createPin();
+  }
+
 })
 
-.controller('BookmarksCtrl', function($scope, $timeout, $ionicModal, Bookmarks, $ionicLoading) {
+.controller('BookmarksCtrl', function($scope, $timeout, $ionicModal, Bookmarks, $ionicLoading, $cordovaPinDialog, SecurePin) {
   bypassQRCode = false;
   $scope.bookmarks = Bookmarks.all();
 
@@ -45,6 +96,15 @@ angular.module('bookmarksApp.controllers', [])
   }).then(function(modal) {
     $scope.bookmarkModal = modal;
   });
+
+  function pinDialogCallback(results) {
+      strResult = JSON.stringify(results);
+      alert(strResult);
+  };
+
+  $scope.showPinDialog = function(message, title) {
+    $cordovaPinDialog.prompt(message, pinDialogCallback, title);
+  }
 
   $scope.createBookmark = function(bookmark) {
     $scope.bookmarks.push({
@@ -120,30 +180,32 @@ angular.module('bookmarksApp.controllers', [])
     $scope.bookmarkModal.hide();
   };
 
-  //$timeout(function() {
-  //  if($scope.bookmarks.length == 0) {
-  //    while(true) {
-  //      //TODO: create new pin
-  //      break;
-  //    }
-  //  }
-  //});
-
 })
 
-.controller('BookmarkCtrl', function($scope, $stateParams, $http, $ionicLoading, Bookmarks, $ionicNavBarDelegate, $ionicPopup, $filter) {
+.controller('BookmarkCtrl', function($scope, $stateParams, $http, $ionicLoading, Bookmarks, $ionicNavBarDelegate, $ionicPopup, SecurePin) {
   $scope.bookmarks = Bookmarks.all();
   $scope.bookmarks.forEach(function(bookmark) {
     if (bookmark.id == $stateParams.bookmarkId) {
       $scope.bookmark = bookmark;
     }
   });
-  //for (var i = 0; i < $scope.bookmarks.length; i++) {
-  //  var currentBookmark = $scope.bookmarks[i];
-  //  if (currentBookmark.id === $stateParams.bookmarkId) {
-  //    $scope.bookmark = $scope.bookmarks[i];
-  //  }
-  //}
+
+  function pinDialogCallback(results) {
+    if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3 && SecurePin.checkPin(results.input1)) {
+      $ionicLoading.show({
+        template: 'Logging in...'
+      });
+      $http.get($scope.bookmark.url).success(function() {
+        $ionicLoading.hide();
+      }).error(function() {
+        $ionicLoading.hide();
+        $ionicLoading.show({
+          template: 'Error! Could not log you in.',
+          duration: 2000
+        });
+      });
+    }
+  }
 
   $scope.login = function() {
     if ($scope.bookmark.url.length < 1) {
@@ -153,18 +215,7 @@ angular.module('bookmarksApp.controllers', [])
       });
       return;
     }
-    $ionicLoading.show({
-      template: 'Logging in...'
-    });
-    $http.get($scope.bookmark.url).success(function() {
-      $ionicLoading.hide();
-    }).error(function() {
-      $ionicLoading.hide();
-      $ionicLoading.show({
-        template: 'Error! Could not log you in.',
-        duration: 2000
-      });
-    });
+    $cordovaPinDialog.prompt("", pinDialogCallback, "Enter your Security PIN");
   };
 
   $scope.delete = function() {

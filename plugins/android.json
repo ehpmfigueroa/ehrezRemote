@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" onload=\"true\" value=\"org.apache.cordova.statusbar.StatusBar\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PinDialog\"><param name=\"android-package\" value=\"hu.dpal.phonegap.plugins.PinDialog\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -557,6 +561,9 @@
             "PACKAGE_NAME": "com.ehrez.ehrezRemote"
         },
         "org.apache.cordova.statusbar": {
+            "PACKAGE_NAME": "com.ehrez.ehrezRemote"
+        },
+        "hu.dpal.phonegap.plugins.PinDialog": {
             "PACKAGE_NAME": "com.ehrez.ehrezRemote"
         }
     },

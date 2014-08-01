@@ -28,3 +28,33 @@ angular.module('bookmarksApp.factories', [])
     }
   }
 })
+
+.factory('SecurePin', function() {
+  return {
+    isNewPinRequired: function() {
+      var securePinString = window.localStorage['securePin'];
+      if (securePinString) {
+        return false;
+      }
+      return true;
+    },
+    checkPin: function(pin) {
+      var securePinString = window.localStorage['securePin'];
+      if(securePinString) {
+        var securePin = angular.fromJson(securePinString);
+        if (pin == securePin) {
+          return true;
+        }
+        return false;
+      }
+      return false;
+    },
+    setNewPin: function(newPin) {
+      if (newPin && newPin.length > 3) {
+        window.localStorage['securePin'] = angular.toJson(newPin);
+        return true;
+      }
+      return false;
+    }
+  }
+})

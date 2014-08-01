@@ -41,6 +41,13 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/hu.dpal.phonegap.plugins.PinDialog/www/pin.js",
+        "id": "hu.dpal.phonegap.plugins.PinDialog.PinDialog",
+        "merges": [
+            "window.plugins.pinDialog"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -50,7 +57,8 @@ module.exports.metadata =
     "com.phonegap.plugins.barcodescanner": "1.2.0",
     "org.apache.cordova.console": "0.2.9",
     "org.apache.cordova.device": "0.2.10",
-    "org.apache.cordova.statusbar": "0.1.6"
+    "org.apache.cordova.statusbar": "0.1.6",
+    "hu.dpal.phonegap.plugins.PinDialog": "0.1.2"
 }
 // BOTTOM OF METADATA
 });
