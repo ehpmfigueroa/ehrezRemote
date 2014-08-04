@@ -13,3 +13,13 @@
 2014-07-31 22:03:23.688 EHRez Remote[81558:70b] [CDVTimer][TotalPluginStartup] 6.705999ms
 2014-07-31 22:03:23.770 EHRez Remote[81558:70b] Resetting plugins due to page load.
 2014-07-31 22:03:23.867 EHRez Remote[81558:70b] Finished load of: file:///Users/blackshuu/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/70246D95-C513-4D9B-A238-1ADD613F8DAA/EHRez%20Remote.app/www/index.html#/app/bookmarks
+2014-08-03 22:24:45.681 EHRez Remote[3034:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-03 22:24:45.731 EHRez Remote[3034:70b] Unlimited access to network resources
+2014-08-03 22:24:46.983 EHRez Remote[3034:70b] [CDVTimer][keyboard] 0.056982ms
+2014-08-03 22:24:47.088 EHRez Remote[3034:70b] [CDVTimer][statusbar] 104.269028ms
+2014-08-03 22:24:47.088 EHRez Remote[3034:70b] [CDVTimer][TotalPluginStartup] 105.186999ms
+2014-08-03 22:24:47.431 EHRez Remote[3034:70b] Resetting plugins due to page load.
+2014-08-03 22:24:47.961 EHRez Remote[3034:70b] Finished load of: file:///Users/blackshuu/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/70246D95-C513-4D9B-A238-1ADD613F8DAA/EHRez%20Remote.app/www/index.html#/app/bookmarks
+2014-08-03 22:24:50.926 EHRez Remote[3034:70b] THREAD WARNING: ['PinDialog'] took '696.472168' ms. Plugin should use a background thread.
+2014-08-03 22:24:58.095 EHRez Remote[3034:70b] THREAD WARNING: ['PinDialog'] took '33.843018' ms. Plugin should use a background thread.
+2014-08-03 22:25:08.635 EHRez Remote[3034:70b] THREAD WARNING: ['PinDialog'] took '14.616943' ms. Plugin should use a background thread.

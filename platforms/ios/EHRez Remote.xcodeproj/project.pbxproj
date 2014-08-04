@@ -50,7 +50,7 @@
 		A677A401846A4D88847F8A42 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496726115174124B4D321B7 /* CDVLogger.m */; };
 		2D9B958210434B51B46E32F7 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFFF6E6BF24108ACE984A6 /* CDVDevice.m */; };
 		6597A5C32EBE4D2B8F03146E /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C8AC42F5764CFFB04C1F29 /* CDVStatusBar.m */; };
-		FD4BF269FBE64031ADACE963 /* CDVPinDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A48F18C884FB4462B7A6EE65 /* CDVPinDialog.m */; };
+		7EC9B82FC03544BE8E64F8DC /* CDVPinDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C042F61650FE49559FAAD1BC /* CDVPinDialog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,8 +133,8 @@
 		4F05BAF838CC49CB80B90101 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		D5C8AC42F5764CFFB04C1F29 /* CDVStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVStatusBar.m"; path = "org.apache.cordova.statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		F39D47C65CC1421199490FB0 /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		A48F18C884FB4462B7A6EE65 /* CDVPinDialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVPinDialog.m"; path = "Plugins\hu.dpal.phonegap.plugins.PinDialog\CDVPinDialog.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		E5F21B5446A64364AAA19641 /* CDVPinDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVPinDialog.h"; path = "Plugins\hu.dpal.phonegap.plugins.PinDialog\CDVPinDialog.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C042F61650FE49559FAAD1BC /* CDVPinDialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVPinDialog.m"; path = "hu.dpal.phonegap.plugins.PinDialog/CDVPinDialog.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		FFBB5057B339401990A63826 /* CDVPinDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVPinDialog.h"; path = "hu.dpal.phonegap.plugins.PinDialog/CDVPinDialog.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,8 +277,8 @@
 				4F05BAF838CC49CB80B90101 /* CDVDevice.h */,
 				D5C8AC42F5764CFFB04C1F29 /* CDVStatusBar.m */,
 				F39D47C65CC1421199490FB0 /* CDVStatusBar.h */,
-				A48F18C884FB4462B7A6EE65 /* CDVPinDialog.m */,
-				E5F21B5446A64364AAA19641 /* CDVPinDialog.h */,
+				C042F61650FE49559FAAD1BC /* CDVPinDialog.m */,
+				FFBB5057B339401990A63826 /* CDVPinDialog.h */,
 			);
 			name = Plugins;
 			path = "EHRez Remote/Plugins";
@@ -481,7 +481,7 @@
 				A677A401846A4D88847F8A42 /* CDVLogger.m in Sources */,
 				2D9B958210434B51B46E32F7 /* CDVDevice.m in Sources */,
 				6597A5C32EBE4D2B8F03146E /* CDVStatusBar.m in Sources */,
-				FD4BF269FBE64031ADACE963 /* CDVPinDialog.m in Sources */,
+				7EC9B82FC03544BE8E64F8DC /* CDVPinDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

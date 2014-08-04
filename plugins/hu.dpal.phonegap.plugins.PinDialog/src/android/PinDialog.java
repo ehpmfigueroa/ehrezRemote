@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 
@@ -108,8 +109,9 @@ public class PinDialog extends CordovaPlugin {
                         }
                     });
 
-                    dlg.create();
-                    dlg.show();
+                    AlertDialog dialog = dlg.create();
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+                    dialog.show();
 
                 };
             };

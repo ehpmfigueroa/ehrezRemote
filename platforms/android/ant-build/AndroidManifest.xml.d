@@ -1,2 +1,2 @@
-C:\Users\Marcos\ehrezRemote\platforms\android\ant-build\AndroidManifest.xml : \
-C:\Users\Marcos\ehrezRemote\platforms\android\AndroidManifest.xml \
+/Users/blackshuu/ehrezRemote/platforms/android/ant-build/AndroidManifest.xml : \
+/Users/blackshuu/ehrezRemote/platforms/android/AndroidManifest.xml \

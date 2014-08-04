@@ -1,41 +1,25 @@
 angular.module('bookmarksApp.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, SecurePin, $cordovaPinDialog) {
-  // Form data for the login modal
-  $scope.loginData = {
-    username: "pcruz",
-    password: "zxc123ZXC"
-  };
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, SecurePin, $ionicLoading, $cordovaPinDialog) {
+
+  var pin1 = "";
+  var pin2 = "";
+  var canCancelNewPin = false;
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
+  $ionicModal.fromTemplateUrl('templates/welcome.html', {
+    scope: $scope,
+    hardwareBackButtonClose: false
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  },
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+  $scope.changePin = function() {
+    $cordovaPinDialog.prompt(" ", pinDialogCallback, "Enter your current Security PIN");
   };
 
   $scope.newPin = function() {
+    canCancelNewPin = false;
     createPin();
   };
 
@@ -45,51 +29,65 @@ angular.module('bookmarksApp.controllers', [])
     }
   });
 
-  var pin1 = "";
-  var pin2 = "";
-
   function createPin() {
     $cordovaPinDialog.prompt("Create a new PIN of your choosing (min 4).", newPinDialogCallback, "New PIN");
   }
 
   function newPinDialogCallback(results) {
     if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3) {
-      alert('pin1');
       pin1 = results.input1;
       $cordovaPinDialog.prompt("Please re-enter the PIN.", retypePinDialogCallback, "PIN Verification");
     } else {
-      createPin();
+      if (canCancelNewPin == false) {
+        createPin();
+      }
     }
   }
 
   function retypePinDialogCallback(results) {
     if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3) {
-      alert('pin2');
       pin2 = results.input1;
       setPin();
     } else {
-      createPin();
+      if (canCancelNewPin == false) {
+        createPin();
+      }
+    }
+  }
+
+  function pinDialogCallback(results) {
+    if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3) {
+      if (SecurePin.checkPin(results.input1)) {
+        canCancelNewPin = true;
+        createPin();
+      } else {
+        $ionicLoading.show({
+          template: 'Invalid Security PIN',
+          duration: 2000
+        });
+      }
     }
   }
 
   function setPin() {
-     if (pin1 == pin2 && SecurePin.setNewPin(pin1) && SecurePin.isNewPinRequired() == false) {
-        $ionicLoading.show({
-          template: 'New pin set!',
-          duration: 2000
-        });
-        return;
-     }
-     $ionicLoading.show({
-        template: 'Error: PINs do not match. Please try again.',
-        duration: 3000
+    if (pin1 == pin2 && SecurePin.setNewPin(pin1) && SecurePin.isNewPinRequired() == false) {
+      $ionicLoading.show({
+        template: 'New pin set!',
+        duration: 2000
       });
-     createPin();
+      $scope.modal.hide();
+      return;
+    }
+    $ionicLoading.show({
+      template: 'Error: PINs do not match. Please try again.',
+      duration: 3000
+    });
+    createPin();
   }
 
 })
 
-.controller('BookmarksCtrl', function($scope, $timeout, $ionicModal, Bookmarks, $ionicLoading, $cordovaPinDialog, SecurePin) {
+.controller('BookmarksCtrl', function($scope, $timeout, $ionicModal, Bookmarks, $ionicLoading) {
   bypassQRCode = false;
   $scope.bookmarks = Bookmarks.all();
 
@@ -98,15 +96,6 @@ angular.module('bookmarksApp.controllers', [])
   }).then(function(modal) {
     $scope.bookmarkModal = modal;
   });
-
-  function pinDialogCallback(results) {
-      strResult = JSON.stringify(results);
-      alert(strResult);
-  };
-
-  $scope.showPinDialog = function(message, title) {
-    $cordovaPinDialog.prompt(message, pinDialogCallback, title);
-  }
 
   $scope.createBookmark = function(bookmark) {
     $scope.bookmarks.push({
@@ -184,7 +173,7 @@ angular.module('bookmarksApp.controllers', [])
 
 })
 
-.controller('BookmarkCtrl', function($scope, $stateParams, $http, $ionicLoading, Bookmarks, $ionicNavBarDelegate, $ionicPopup, SecurePin) {
+.controller('BookmarkCtrl', function($scope, $stateParams, $http, $ionicLoading, Bookmarks, $ionicNavBarDelegate, $ionicPopup, $cordovaPinDialog, SecurePin) {
   $scope.bookmarks = Bookmarks.all();
   $scope.bookmarks.forEach(function(bookmark) {
     if (bookmark.id == $stateParams.bookmarkId) {
@@ -193,19 +182,26 @@ angular.module('bookmarksApp.controllers', [])
   });
 
   function pinDialogCallback(results) {
-    if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3 && SecurePin.checkPin(results.input1)) {
-      $ionicLoading.show({
-        template: 'Logging in...'
-      });
-      $http.get($scope.bookmark.url).success(function() {
-        $ionicLoading.hide();
-      }).error(function() {
-        $ionicLoading.hide();
+    if (results && results.buttonIndex == 1 && results.input1 && results.input1.length > 3) {
+      if (SecurePin.checkPin(results.input1)) {
         $ionicLoading.show({
-          template: 'Error! Could not log you in.',
+          template: 'Logging in...'
+        });
+        $http.get($scope.bookmark.url).success(function() {
+          $ionicLoading.hide();
+        }).error(function() {
+          $ionicLoading.hide();
+          $ionicLoading.show({
+            template: 'Error! Could not log you in.',
+            duration: 2000
+          });
+        });
+      } else {
+        $ionicLoading.show({
+          template: 'Invalid Security PIN',
           duration: 2000
         });
-      });
+      }
     }
   }
 
@@ -217,7 +213,7 @@ angular.module('bookmarksApp.controllers', [])
       });
       return;
     }
-    $cordovaPinDialog.prompt("", pinDialogCallback, "Enter your Security PIN");
+    $cordovaPinDialog.prompt(" ", pinDialogCallback, "Enter your Security PIN");
   };
 
   $scope.delete = function() {
